@@ -20,6 +20,13 @@ public class SetLocalplayer : NetworkBehaviour
     // Start is called before the first frame update
 
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        OnChangeName(playerLabel.text);
+        OnChangeColor(pColor);
+    }
+
     void OnChangeColor(string color)
     {
         pColor = color;
@@ -62,9 +69,9 @@ public class SetLocalplayer : NetworkBehaviour
         return new Color32(r, g, b, a);
     }
     
-    void OnChangeName(string name)
+    void OnChangeName(string newName)
     {
-        pName = name;
+        pName = newName;
         playerLabel.text = pName;
     }
     
